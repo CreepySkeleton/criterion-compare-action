@@ -6,6 +6,9 @@ const tools = new Toolkit({
 async function main() {
   tools.log("### Benchmark starting ###");
   await tools.runInWorkspace("cargo", [
+    "--version"
+  ]);
+  await tools.runInWorkspace("cargo", [
     "bench",
     "--",
     "--save-baseline",
@@ -36,7 +39,7 @@ async function main() {
 }
 
 function convertToMarkdown(results) {
-  /* Example results: 
+  /* Example results:
     group                            changes                                master
     -----                            -------                                ------
     character module                 1.03     22.2±0.41ms        ? B/sec    1.00     21.6±0.53ms        ? B/sec
